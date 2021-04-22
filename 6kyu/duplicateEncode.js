@@ -1,5 +1,5 @@
 function duplicateEncode(word) {
-  let wordLowerArr = word.toLowerCase().split("");
+  const wordLowerArr = word.toLowerCase().split("");
 
   return wordLowerArr
     .map((word) => {
