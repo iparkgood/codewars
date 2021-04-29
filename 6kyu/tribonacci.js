@@ -1,20 +1,9 @@
 function tribonacci(signature, n) {
-  if (n === 0) return [];
-  if (n < 3) return signature.splice(0, 1);
-
-  signature = fibonacci(signature, n);
-
-  return signature;
-}
-
-function fibonacci(signature, n) {
-  let arr = signature;
-
-  for (let i = 0; i < n - 3; i++) {
-    arr.push(arr[i] + arr[i + 1] + arr[i + 2]);
+  for (var i = 0; i < n - 3; i++) {
+    // iterate n times
+    signature.push(signature[i] + signature[i + 1] + signature[i + 2]); // add last 3 array items and push to trib
   }
-
-  return arr;
+  return signature.slice(0, n); //return trib - length of n
 }
 
 console.log(tribonacci([1, 1, 1], 10)); //[1,1,1,3,5,9,17,31,57,105]
