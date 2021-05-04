@@ -1,29 +1,24 @@
 function findEvenIndex(arr) {
-  let idx = 0;
   let sumLeft = 0;
-  let sumRight = 0;
-  let isFind = false;
+  let sumRight = arr.reduce((acc, el) => acc + el, 0);
 
   for (let i = 0; i < arr.length; i++) {
-    sumLeft = 0;
-    sumRight = 0;
-    for (let j = i - 1; j >= 0; j--) {
-      sumLeft += arr[j];
+    if (i > 0) {
+      sumLeft += arr[i - 1];
     }
-    for (let k = i + 1; k < arr.length; k++) {
-      sumRight += arr[k];
-    }
+
+    sumRight -= arr[i];
+
     if (sumLeft === sumRight) {
-      idx = i;
-      isFind = true;
+      return i;
     }
   }
 
-  return  isFind? idx: -1;
+  return -1;
 }
 
 console.log(findEvenIndex([1, 2, 3, 4, 3, 2, 1])); //3, "The array was: [1,2,3,4,3,2,1] \n");
 console.log(findEvenIndex([1, 100, 50, -51, 1, 1])); //1, "The array was: [1,100,50,-51,1,1] \n");
 console.log(findEvenIndex([1, 2, 3, 4, 5, 6])); //-1, "The array was: [1,2,3,4,5,6] \n");
 console.log(findEvenIndex([20, 10, 30, 10, 10, 15, 35])); //3, "The array was: [20,10,30,10,10,15,35] \n");
-console.log(findEvenIndex([20,10,-80,10,10,15,35])); //0
+console.log(findEvenIndex([20, 10, -80, 10, 10, 15, 35])); //0
