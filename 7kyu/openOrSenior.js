@@ -1,13 +1,7 @@
 function openOrSenior(data) {
-  return data.map((el) => {
-    if (el[0] >= 55) {
-      if (el[1] > 7) {
-        return "Senior";
-      }
-      return "Open";
-    }
-    return "Open";
-  });
+  return data.map(([age, handicap]) =>
+    age >= 55 && handicap > 7 ? "Senior" : "Open"
+  );
 }
 
 /*
