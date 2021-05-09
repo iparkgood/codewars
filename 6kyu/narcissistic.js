@@ -1,13 +1,11 @@
 function narcissistic(value) {
-    const valueArr = [...value.toString()];
-    const powNum = valueArr.length;
-    let sum = 0;
-
-    for (let i = 0; i < powNum; i++) {
-      sum += Math.pow(+valueArr[i], powNum);
-    }
-
-    return value === sum;
+  return (
+    value ===
+    [...value.toString()].reduce(
+      (acc, el, idx, arr) => (acc += Math.pow(+el, arr.length)),
+      0
+    )
+  );
 }
 
 console.log(narcissistic(7)); // true, "7 is narcissistic"
