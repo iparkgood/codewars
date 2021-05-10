@@ -2,7 +2,7 @@ function list(names) {
   const nameArr = names.map((name) => name.name);
 
   if (nameArr.length === 0 || names === []) return "";
-  if (nameArr.length === 1) return nameArr.join("");
+  if (nameArr.length === 1) return nameArr[0];
 
   return (
     nameArr.slice(0, nameArr.length - 1).join(", ") +
