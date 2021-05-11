@@ -1,18 +1,12 @@
 function findOdd(A) {
   const Nums = {};
 
-  for (let i = 0; i < A.length; i++) {
-    if (Nums.hasOwnProperty(A[i])) {
-      Nums[A[i]]++;
-    } else {
-      Nums[A[i]] = 1;
-    }
-  }
+  A.forEach((num) => {
+    Nums[num] ? Nums[num]++ : (Nums[num] = 1);
+  });
 
   for (const prop in Nums) {
-    if (Nums[prop] % 2 !== 0) {
-      return +prop;
-    }
+    if (Nums[prop] % 2 !== 0) return +prop;
   }
 }
 
