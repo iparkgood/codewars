@@ -1,32 +1,12 @@
 function comp(array1, array2) {
   if (array1 === null || array2 === null) return false;
 
-  let obj1 = {};
-  let obj2 = {};
+  array1.sort((a, b) => a - b);
+  array2.sort((a, b) => a - b);
 
-  array1.forEach((el1) => {
-    if (!obj1.hasOwnProperty(el1)) {
-      obj1[el1] = 1;
-    } else {
-      obj1[el1]++;
-    }
-  });
-
-  array2.forEach((el2) => {
-    if (!obj2.hasOwnProperty(el2)) {
-      obj2[el2] = 1;
-    } else {
-      obj2[el2]++;
-    }
-  });
-
-  for (const prop1 in obj1) {
-    for (const prop2 in obj2) {
-      if (obj2[Math.pow(prop1, 2)] !== obj1[prop1]) return false;
-    }
-  }
-
-  return true;
+  return array1
+    .map((el1) => Math.pow(el1, 2))
+    .every((el1, idx) => el1 === array2[idx]);
 }
 
 console.log(
