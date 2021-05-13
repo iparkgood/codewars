@@ -3,8 +3,7 @@ function digPow(n, p) {
   const nums = [...n.toString()].map((num) => +num);
 
   for (let i = 0; i < nums.length; i++) {
-    sum += Math.pow(nums[i], p);
-    p++;
+    sum += Math.pow(nums[i], p + i);
   }
 
   return Number.isInteger(sum / n) ? sum / n : -1;
