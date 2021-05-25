@@ -1,23 +1,7 @@
 function anagrams(word, words) {
-  let result = [];
+  const sorted = [...word].sort().join("");
 
-  const total = [...word].reduce((sum, w) => {
-    return sum + w.charCodeAt();
-  }, 0);
-
-  const totals = words.map((word) => {
-    return [...word].reduce((sum, w) => {
-      return sum + w.charCodeAt();
-    }, 0);
-  });
-
-  for (let i = 0; i < totals.length; i++) {
-    if (totals[i] === total) {
-      result.push(words[i]);
-    }
-  }
-
-  return result;
+  return words.filter((w) => [...w].sort().join("") === sorted);
 }
 
 console.log(anagrams("abba", ["aabb", "abcd", "bbaa", "dada"])); //['aabb', 'bbaa']
