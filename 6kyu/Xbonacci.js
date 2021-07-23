@@ -1,19 +1,11 @@
 function Xbonacci(signature, n) {
-  if (n < signature.length) {
-    return signature.slice(0, n);
+  const len = signature.length;
+
+  for (let i = len; i < n; i++) {
+    signature[i] = signature.slice(i - len).reduce((acc, s) => acc + s);
   }
 
-  let result = [...signature];
-
-  for (let i = 0; i < n - signature.length; i++) {
-    let sum = 0;
-    for (let j = i; j < i + signature.length; j++) {
-      sum += result[j];
-    }
-    result.push(sum);
-  }
-
-  return result;
+  return signature.slice(0, n);
 }
 
 console.log(Xbonacci([0, 1], 10)); //[0,1,1,2,3,5,8,13,21,34]
