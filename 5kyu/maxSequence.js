@@ -2,15 +2,12 @@ var maxSequence = function (arr) {
   //returns 0 if the array only includes negative numbers or empty
   if (arr.every((e) => e < 0) || !arr.length) return 0;
 
-  let maxSum = 0;
   let currentSum = 0;
   //find maxSequence
-  for (let i = 0; i < arr.length; i++) {
-    currentSum = Math.max(0, currentSum + arr[i]);
-    maxSum = Math.max(currentSum, maxSum);
-  }
-
-  return maxSum;
+  return arr.reduce((acc, el) => {
+    currentSum = Math.max(0, currentSum + el);
+    return Math.max(acc, currentSum);
+  }, 0);
 };
 
 console.log(maxSequence([])); //0
