@@ -1,18 +1,15 @@
 function countPositivesSumNegatives(input) {
   if (input === null || input.length === 0) return [];
 
-  let count = 0;
-  let sum = 0;
+  return input.reduce(
+    (acc, el) => {
+      if (el > 0) acc[0]++;
+      if (el < 0) acc[1] += el;
 
-  for (let i = 0; i < input.length; i++) {
-    if (input[i] > 0) {
-      count++;
-    } else if (input[i] < 0) {
-      sum += input[i];
-    }
-  }
-
-  return [count, sum];
+      return acc;
+    },
+    [0, 0]
+  );
 }
 
 console.log(
