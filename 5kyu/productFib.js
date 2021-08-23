@@ -1,22 +1,17 @@
 function productFib(prod) {
   let [prev, current] = [1, 1];
 
-  while (prev * current <= prod) {
-    if (prev * current === prod) return [prev, current, true];
-    
+  while (prev * current < prod) {
     let newFib = prev + current;
     prev = current;
     current = newFib;
   }
-  //while loop until new is smaller than prod
+  //loop while prev * current is smaller than prod
   //prev
   //current
   //new = prev * current
-  //check if new is same as prod
-  //return true
 
-  //return false
-  return [prev, current, false];
+  return [prev, current, prev * current === prod];
 }
 
 console.log(productFib(4895)); //[55, 89, true]
