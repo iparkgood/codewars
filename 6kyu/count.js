@@ -1,11 +1,8 @@
 function count(string) {
-  let obj = {};
-
-  [...string].forEach((letter) => {
+  return [...string].reduce((obj, letter) => {
     obj[letter] = (obj[letter] || 0) + 1;
-  });
-
-  return obj;
+    return obj;
+  }, {});
 }
 
 console.log(count("aba")); //{ a: 2, b: 1 }
